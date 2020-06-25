@@ -1,2 +1,25 @@
-- name: Pyenv Build
-  uses: gabrielfalcao/pyenv-action@v6
+name: Using
+on: [push]
+
+jobs:
+  my_python_job:
+    name: "Python"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python:
+          - 3.7.5
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install python version
+      uses: gabrielfalcao/pyenv-action@v5
+      with:
+        default: "${{ matrix.python }}"
+        command: pip install -U pip  # upgrade pip after installing python
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run Hello World
+      run: python print('Hello World! It works...')
