@@ -22,4 +22,4 @@ jobs:
 #      run: pip install -r requirements.txt
 
     - name: Run Hello World
-      run: python print('Hello World! It works...')
+      run: print('Hello World! It works...')
