@@ -1,1 +1,1 @@
-print('Hello World')
+print(str(sys.argv))
