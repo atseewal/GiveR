@@ -12,14 +12,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Install python version
-      uses: gabrielfalcao/pyenv-action@v5
+    - uses: actions/setup-python@v2
       with:
-        default: "${{ matrix.python }}"
-        command: pip install -U pip  # upgrade pip after installing python
-
-#    - name: Install dependencies
-#      run: pip install -r requirements.txt
-
-    - name: Run Hello World
-      run: print('Hello World! It works...')
+        python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+        architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+    - run: python my_script.py
